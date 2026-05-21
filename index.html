@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Shifumi</title>
+</head>
+<body>
+    <h1> Shifumi</h1>
+<script>
+    var choix = ["Pierre", "Feuille", "Ciseaux"];
+
+    var resultat = document.createElement("p");
+    document.body.appendChild(resultat);
+
+    choix.forEach(function(c) {
+        var btn = document.createElement("button");
+        btn.textContent = c;
+        btn.onclick = function() {
+            var ordi = choix[Math.floor(Math.random() * 3)];
+            var issue;
+            if (c === ordi) {
+                issue = "Égalité !";
+            } else if (
+                (c === "Feuille"  && ordi === "Pierre")  ||
+                (c === "Pierre"   && ordi === "Ciseaux") ||
+                (c === "Ciseaux"  && ordi === "Feuille")
+            ) {
+                issue = "Vous gagnez !";
+            } else {
+                issue = "L'ordinateur gagne !";
+            }
+            resultat.textContent = "L'ordinateur a choisi " + ordi + " , " + issue;
+        };
+        document.body.appendChild(btn);
+    });
+</script>
+</body>
+</html>
